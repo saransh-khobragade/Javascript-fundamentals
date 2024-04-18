@@ -1,7 +1,7 @@
 class Node {
     constructor(data) {
         this.data = data
-        this.next = null                
+        this.link = null                
     }
 }
 class LinkedList {
@@ -10,9 +10,9 @@ class LinkedList {
     }
     print(){
         let ptr = this.head
-        while (ptr.next) {
+        while (ptr.link) {
             console.log(ptr.data)
-            ptr = ptr.next
+            ptr = ptr.link
         }
         console.log(ptr.data)
     }
@@ -21,22 +21,22 @@ class LinkedList {
         if(ptr==null){
             this.head = new Node(data)
         }else{
-            while (ptr.next) {
-                ptr = ptr.next
+            while (ptr.link) {
+                ptr = ptr.link
             }
-            ptr.next = new Node(data)
+            ptr.link = new Node(data)
         }
     }
     remove(data){
         let ptr = this.head;
         if(ptr.data==data){
-            this.head = this.head.next;
+            this.head = this.head.link;
         }
-        while (ptr.next) {
-            if(ptr.next.data == data){
-                ptr.next = ptr.next.next
+        while (ptr.link) {
+            if(ptr.link.data == data){
+                ptr.link = ptr.link.link
             }else{
-                ptr = ptr.next
+                ptr = ptr.link
             }
         }
     }
@@ -45,7 +45,7 @@ class LinkedList {
         let ptr = this.head;
         while (ptr) {
             count++;
-            ptr = ptr.next
+            ptr = ptr.link
         }
         return count;
     }
