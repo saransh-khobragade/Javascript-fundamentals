@@ -1,3 +1,4 @@
+//https://leetcode.com/problems/contains-duplicate/description/
 var containsDuplicate = function(nums) {
     const hmap = {}
     nums.forEach(x=>{
