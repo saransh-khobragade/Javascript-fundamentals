@@ -63,3 +63,7 @@ console.log("linked list size:",list.size())
 list.remove(5)
 list.print()
 console.log("linked list size:",list.size())
+
+module.exports = {
+    LinkedList,
+};
