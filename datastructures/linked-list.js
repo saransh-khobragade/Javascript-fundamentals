@@ -1,7 +1,7 @@
 class Node {
     constructor(data) {
-        this.data = data
-        this.link = null                
+        this.val = data
+        this.next = null                
     }
 }
 class LinkedList {
@@ -10,33 +10,32 @@ class LinkedList {
     }
     print(){
         let ptr = this.head
-        while (ptr.link) {
-            console.log(ptr.data)
-            ptr = ptr.link
+        while (ptr) {
+            console.log(ptr.val)
+            ptr = ptr.next
         }
-        console.log(ptr.data)
     }
     add(data){
-        let ptr = this.head;
-        if(ptr==null){
+        if(this.head==null){
             this.head = new Node(data)
         }else{
-            while (ptr.link) {
-                ptr = ptr.link
+            let ptr = this.head;    //shallow copy
+            while (ptr.next) {
+                ptr = ptr.next
             }
-            ptr.link = new Node(data)
+            ptr.next = new Node(data)
         }
     }
     remove(data){
         let ptr = this.head;
-        if(ptr.data==data){
-            this.head = this.head.link;
+        if(ptr.val==data){
+            this.head = this.head.next;
         }
-        while (ptr.link) {
-            if(ptr.link.data == data){
-                ptr.link = ptr.link.link
+        while (ptr.next) {
+            if(ptr.next.val == data){
+                ptr.next = ptr.next.next
             }else{
-                ptr = ptr.link
+                ptr = ptr.next
             }
         }
     }
@@ -45,7 +44,7 @@ class LinkedList {
         let ptr = this.head;
         while (ptr) {
             count++;
-            ptr = ptr.link
+            ptr = ptr.next
         }
         return count;
     }
@@ -59,6 +58,8 @@ list.add(3)
 list.add(4)
 list.add(5)
 list.print()
+console.log("linked list size:",list.size())
+
 list.remove(5)
 list.print()
 console.log("linked list size:",list.size())
