@@ -30,3 +30,9 @@ arr = [1,2,3,4]
 console.log(arr.splice(0,1,5,6))  //[ 1 ] return sliced array  from third aurgument everything is replacement
 console.log(arr)                //[ 5, 6, 2, 3, 4 ]
 
+arr = [1,2,3,4]
+console.log(arr.shift())        //1 pop first element and return it
+console.log(arr)                //[ 2, 3, 4 ]
+console.log(arr.unshift(0))     //4 add infront of array,return length of new array
+console.log(arr)                //[ 0, 2, 3, 4 ]
+
