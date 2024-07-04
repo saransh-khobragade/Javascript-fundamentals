@@ -1,4 +1,4 @@
-//Index 0, 1 ,2, 3, 4, 5, 6 , 7
+//Index    1, 2, 3, 4, 5, 6
 //      0, 1, 1, 2, 3, 5, 8, 13
 const fibonacci = (n)=>{
     let a = 0
@@ -9,6 +9,8 @@ const fibonacci = (n)=>{
         a = b
         b = c
     }
-    return b
+    return c
 }
-fibonacci(5)
+fibonacci(6)
+
+//TC o(n) = n
