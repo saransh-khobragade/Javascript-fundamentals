@@ -25,3 +25,5 @@ b2.result.marks = 50
 
 console.log(a2)
 console.log(b2)
+
+//Note it will ont work if properties are functions, sysbols, date
