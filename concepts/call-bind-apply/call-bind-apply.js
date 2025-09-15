@@ -1,43 +1,60 @@
-//-------------------------Call-----------------------------------------------
-var obj = {name:"Niladri"};
+/**
+call → Call now, pass args one by one.
+apply → Call now, pass args in an array.
+bind → Don’t call now, return a new function with context set.
+ */
 
-var greeting = function(a,b,c){
-    return "welcome "+this.name+" to "+a+" "+b+" in "+c;
+const person = {
+    name: "Alice",
 };
 
-console.log(greeting.call(obj,"Newtown","KOLKATA","WB"));
+function greet(greeting, punctuation) {
+    console.log(`${greeting}, my name is ${this.name}${punctuation}`);
+}
+
+//-------------------------Call-----------------------------------------------
+greet.call(person, "Hello", "!");
+// Output: Hello, my name is Alice!
+// Immediately calls the function.
+// Pass arguments one by one.
 
 //---------------------------Apply--------------------------------------------
 
-var obj = {name:"Niladri"};
-
-var greeting = function(a,b,c){
-    return "welcome "+this.name+" to "+a+" "+b+" in "+c;
-};
-
-// array of arguments to the actual function
-var args = ["Newtown","KOLKATA","WB"];  
-console.log("Output using .apply() below ")
-console.log(greeting.apply(obj,args));
+greet.apply(person, ["Hi", "!!"]);
+// Output: Hi, my name is Alice!!
+// Immediately calls the function.
+// Pass arguments as an array.
 
 //----------------------------Bind-------------------------------------------
 
-var obj = {name:"Niladri"};
+const greetAlice = greet.bind(person);
+greetAlice("Hey", "?");
+// Output: Hey, my name is Alice?
+// Does not call immediately.
+// Returns a new function with this bound (and optionally some arguments).
 
-var greeting = function(a,b,c){
-    return "welcome "+this.name+" to "+a+" "+b+" in "+c;
-};
+//Array examples
 
-//creates a bound function that has same body and parameters 
-var bound = greeting.bind(obj); 
+//Call
+function demo() {
+    // arguments is array-like
+    const arr = Array.prototype.slice.call(arguments);
+    console.log(arr);
+}
 
+demo(1, 2, 3, 4); // [1, 2, 3, 4]
 
-console.dir(bound); ///returns a function
+//Apply
+const nums = [10, 5, 20, 3];
 
-console.log("Output using .bind() below ");
+console.log(Math.max.apply(null, nums)); // 20
+console.log(Math.min.apply(null, nums)); // 3
 
-console.log(bound("Newtown","KOLKATA","WB")); //call the bound function
+//Bind
+const numbers = [1, 2, 3, 4, 5];
 
-/* the output will be 
-Output using .bind() below
-welcome Niladri to Newtown KOLKATA in WB */
+// Borrow Array.prototype.map and bind it to numbers
+const mapNumbers = Array.prototype.map.bind(numbers);
+
+const doubled = mapNumbers((x) => x * 2);
+console.log(doubled); // [2, 4, 6, 8, 10]
