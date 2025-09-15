@@ -1,7 +1,0 @@
-Dynamic intialization of N length array
-    Array(26).fill(0)
-
-Max of Array
-    Math.max(...charArr)
-
-

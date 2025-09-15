@@ -5,13 +5,23 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "node",
+            "name": "node",
+            "program": "${file}",
             "request": "launch",
-            "name": "Launch Program",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${file}"
+            "type": "node",
+            "outputCapture": "std"
+            // "console": "integratedTerminal"
+
+        },
+        {
+            "name": "Python",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
         }
     ]
 }
